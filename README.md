@@ -1,16 +1,19 @@
 # @mizchi/svelte-printer
 
+Svelte 
+
 ```bash
-npm install @mizchi/svelte-printer;
+npm install @mizchi/svelte-printer prettier;
 ```
 
 ```js
 import { printCode } from '@mizchi/svelte-printer';
 import { parse } from 'svelte/compiler';
 
-const code = `<script lang="ts">let x = 1</script>
+const code = `<script>let x = 1</script>
 <button on:click={() => x += 1}>{x}</button>
 `;
+
 const parsed = parse(code);
 const printed = printCode(ast);
 console.log(printed);
