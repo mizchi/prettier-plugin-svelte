@@ -1,3 +1,23 @@
+# @mizchi/svelte-printer
+
+```bash
+npm install @mizchi/svelte-printer;
+```
+
+```js
+import { printCode } from '@mizchi/svelte-printer';
+import { parse } from 'svelte/compiler';
+
+const code = `<script lang="ts">let x = 1</script>
+<button on:click={() => x += 1}>{x}</button>
+`;
+const parsed = parse(code);
+const printed = printCode(ast);
+console.log(printed);
+```
+
+---
+
 # Prettier for Svelte 3 components
 
 Format your Svelte components using Prettier.
@@ -37,7 +57,7 @@ If you want to customize some formatting behavior, see section "Options" below.
 
 ## Options
 
-``Configurations are optional``
+`Configurations are optional`
 
 Make a `.prettierrc` file in your project directory (Read more about prettier config files [here](https://prettier.io/docs/en/configuration.html))
 and add your preferred configuration options. When using Prettier through the CLI, you can also pass options through CLI flags, but a `.prettierrc` file is recommended.
@@ -65,7 +85,7 @@ Example:
 <div foo="{bar}"></div>
 
 <!-- svelteStrictMode: false -->
-<div foo={bar} />
+<div foo="{bar}" />
 ```
 
 | Default | CLI Override                  | API Override               |
@@ -83,7 +103,7 @@ Example:
 <input type="text" {value} />
 
 <!-- allowShorthand: false -->
-<input type="text" value={value} />
+<input type="text" value="{value}" />
 ```
 
 | Default | CLI Override                      | API Override                   |
@@ -92,13 +112,16 @@ Example:
 
 ### Svelte Bracket New Line
 
-Put the `>` of a multiline element on a new line. Roughly the Svelte equivalent of the [jsxBracketSameLine](https://prettier.io/docs/en/options.html#jsx-brackets) rule. Setting this to `false` will have no effect for whitespace-sensitive tags (inline elements) when there's no whitespace between the `>` of the start tag and the inner content, or when there's no whitespace after the `>` of the end tag. 
+Put the `>` of a multiline element on a new line. Roughly the Svelte equivalent of the [jsxBracketSameLine](https://prettier.io/docs/en/options.html#jsx-brackets) rule. Setting this to `false` will have no effect for whitespace-sensitive tags (inline elements) when there's no whitespace between the `>` of the start tag and the inner content, or when there's no whitespace after the `>` of the end tag.
 
 Example:
 
 ```html
 <!-- before formatting -->
-<span><div>foo</div><span>bar</span></span>
+<span
+    ><div>foo</div>
+    <span>bar</span></span
+>
 <div pretend break>content</div>
 
 <!-- after formatting, svelteBracketNewLine true -->
@@ -106,22 +129,14 @@ Example:
     ><div>foo</div>
     <span>bar</span></span
 >
-<div
-     pretend
-     break
->
-    content
-</div>
+<div pretend break>content</div>
 
 <!-- after formatting, svelteBracketNewLine false -->
 <span
     ><div>foo</div>
-    <span>bar</span></span>
-<div
-     pretend
-     break>
-    content
-</div>
+    <span>bar</span></span
+>
+<div pretend break>content</div>
 ```
 
 | Default | CLI Override                       | API Override                   |
@@ -140,10 +155,10 @@ Whether or not to indent the code inside `<script>` and `<style>` tags in Svelte
 
 ```json
 {
-  "svelteSortOrder" : "options-styles-scripts-markup",
-  "svelteStrictMode": true,
-  "svelteBracketNewLine": false,
-  "svelteAllowShorthand": false,
-  "svelteIndentScriptAndStyle": false
+    "svelteSortOrder": "options-styles-scripts-markup",
+    "svelteStrictMode": true,
+    "svelteBracketNewLine": false,
+    "svelteAllowShorthand": false,
+    "svelteIndentScriptAndStyle": false
 }
 ```
