@@ -3,6 +3,7 @@
     "version": "2.1.6",
     "description": "Svelte plugin for prettier",
     "main": "plugin.js",
+    "types": "plugin.d.ts",
     "files": [
         "plugin.js",
         "plugin.js.map"

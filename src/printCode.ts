@@ -3,7 +3,7 @@ import prettier from 'prettier/standalone';
 import * as p from './index';
 
 export function printCode(ast: Ast) {
-    const overridePlugin = {
+    const override = {
         ...p,
         parsers: {
             ...p.parsers,
@@ -17,6 +17,6 @@ export function printCode(ast: Ast) {
     };
     return prettier.format(' dummy ', {
         parser: 'svelte',
-        plugins: [overridePlugin as any],
+        plugins: [override as any],
     });
 }
