@@ -1,5 +1,5 @@
 {
-    "name": "prettier-plugin-svelte",
+    "name": "@mizchi/svelte-printer",
     "version": "2.1.6",
     "description": "Svelte plugin for prettier",
     "main": "plugin.js",
@@ -28,13 +28,13 @@
     },
     "homepage": "https://github.com/sveltejs/prettier-plugin-svelte#readme",
     "devDependencies": {
+        "@rollup/plugin-commonjs": "14.0.0",
+        "@rollup/plugin-node-resolve": "11.0.1",
         "@types/node": "^10.12.18",
         "@types/prettier": "^2.1.6",
         "ava": "3.15.0",
         "prettier": "^2.2.1",
         "rollup": "2.36.0",
-        "@rollup/plugin-commonjs": "14.0.0",
-        "@rollup/plugin-node-resolve": "11.0.1",
         "rollup-plugin-typescript": "1.0.1",
         "svelte": "^3.30.0",
         "ts-node": "^9.1.1",
@@ -44,5 +44,8 @@
     "peerDependencies": {
         "prettier": "^1.16.4 || ^2.0.0",
         "svelte": "^3.2.0"
+    },
+    "dependencies": {
+        "astring": "^1.7.0"
     }
 }

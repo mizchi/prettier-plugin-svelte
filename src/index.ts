@@ -65,3 +65,5 @@ export const printers: Record<string, Printer> = {
 };
 
 export { options } from './options';
+
+export { printCode } from './printCode';
